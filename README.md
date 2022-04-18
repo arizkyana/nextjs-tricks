@@ -1,3 +1,41 @@
+# Frontend Class Materials
+
+## Tutorials
+
+Pada bagian ini akan dibahas beberapa contoh kode yang akan disesuaikan dengan studi kasus
+
+Untuk pertama kali, silahkan clone atau download repository ini kemudian lakukan instalasi dependecies dengan perintah :
+
+```bash
+npm install
+# atau
+yarn install
+```
+
+Apabila sudah seleai instalasi, kemudian jalankan server development dengan perintah :
+
+```bash
+npm run dev
+# atau
+yarn dev
+```
+
+### Studi kasus
+
+#### Responsive
+
+Setelah server development dijalankan, silahkan akses tautan berikut ini :
+
+- [http://localhost:3000/responsive/basic](http://localhost:3000/responsive/basic)
+
+- [http://localhost:3000/responsive/medium](http://localhost:3000/responsive/medium)
+
+- [http://localhost:3000/responsive/advanced](http://localhost:3000/responsive/advanced)
+
+---
+
+# NextJS Overview
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
