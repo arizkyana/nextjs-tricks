@@ -32,6 +32,12 @@ Setelah server development dijalankan, silahkan akses tautan berikut ini :
 
 - [http://localhost:3000/responsive/advanced](http://localhost:3000/responsive/advanced)
 
+Masing - masing url dapat diakses file komponen nya di dalam folder :
+
+```bash
+./src/pages/responsive
+```
+
 ---
 
 # NextJS Overview
