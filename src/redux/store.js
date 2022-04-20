@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
   // product,
   counter,
 });
-
 const store = configureStore({
   reducer: rootReducer,
 });
