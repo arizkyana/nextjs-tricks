@@ -5,6 +5,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import counter from "./reducers/counter";
 import login from "./reducers/login";
 import sendOtp from "./reducers/send-otp";
+import createPost from "./reducers/create-post";
 
 // BANK
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   counter,
   login,
   sendOtp,
+  createPost,
 });
 const store = configureStore({
   reducer: rootReducer,
