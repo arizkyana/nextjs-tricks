@@ -6,6 +6,7 @@ import counter from "./reducers/counter";
 import login from "./reducers/login";
 import sendOtp from "./reducers/send-otp";
 import createPost from "./reducers/create-post";
+import registrasi from "./reducers/registrasi";
 
 // BANK
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   login,
   sendOtp,
   createPost,
+  registrasi,
 });
 const store = configureStore({
   reducer: rootReducer,
