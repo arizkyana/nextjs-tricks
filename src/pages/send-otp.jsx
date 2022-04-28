@@ -1,3 +1,4 @@
+import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSendOtpDispatcher } from "../redux/reducers/send-otp";
@@ -11,6 +12,7 @@ const SendOtpPage = () => {
   const {
     sendOtp: { loading },
     resendOtp,
+    validateOtp,
   } = useSendOtpDispatcher();
 
   const isStop = false;
@@ -40,9 +42,18 @@ const SendOtpPage = () => {
     setStartCounting(true);
   };
 
+  const onSubmit = async (values) => {
+    await validateOtp(values);
+    push('/confirmOtp');
+  }
+
+  const {} = useFormik({
+    onSubmit
+  });
+
   return (
     <div className="min-h-screen container mx-auto flex flex-col justify-center items-center">
-      <div className="flex flex-col space-y-3 justify-center items-center">
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-3 justify-center items-center">
         <div>resend otp in {counting}s</div>
         <button
           onClick={() => handleCountDown()}
@@ -56,8 +67,9 @@ const SendOtpPage = () => {
         >
           Send OTP
         </button>
+        <button type="submit">Next</button>
       </div>
-    </div>
+    </form>
   );
 };
 

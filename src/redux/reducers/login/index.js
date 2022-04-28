@@ -36,32 +36,47 @@ export const useLoginDispatcher = () => {
 
   const doLogin = async (payload) => {
     dispatch(toggleLoading(true));
+
+    const formData = new FormData();
+    formData.append("username", payload.username);
+    formData.append("password", payload.password);
+
     try {
-      const response = await axios({
-        url: "https://myappventure-api.herokuapp.com/api/user-login/login",
+      const { data: loginData } = await axios({
+        url: "https://markas-gamer.herokuapp.com/mager/login",
         method: "post",
-        data: payload,
+        data: formData,
       });
-      const { data } = response;
-      if (data.status === "404") {
-        console.log(`error > ${data.message}`);
-        dispatch(toggleLoading(false));
-        dispatch(
-          setErrMessage({
-            title: "Oops... terjadi kesalahan",
-            content: data.message,
-          })
-        );
-        return;
-      }
+
+      const { data: userData } = await axios({
+        url: `https://markas-gamer.herokuapp.com/mager/user/${loginData.idUser}`,
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${loginData.access_token}`,
+        },
+      });
+
+      console.log("userData > ", userData);
+
+      // if (data.status === "404") {
+      //   console.log(`error > ${data.message}`);
+      //   dispatch(toggleLoading(false));
+      //   dispatch(
+      //     setErrMessage({
+      //       title: "Oops... terjadi kesalahan",
+      //       content: data.message,
+      //     })
+      //   );
+      //   return;
+      // }
 
       // kondisi berhasil
       // const accessToken = data.access_token;
 
-      localStorage.setItem("access_token", data.access_token);
+      // localStorage.setItem("access_token", data.access_token);
       dispatch(toggleLoading(false));
     } catch (error) {
-      console.log("error > ", error);
+      console.log("error > ", error.response.data.message);
     }
   };
 

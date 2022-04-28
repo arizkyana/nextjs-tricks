@@ -52,10 +52,29 @@ export const useSendOtpDispatcher = () => {
     }
   };
 
+  const validateOtp = async (payload) => {
+    dispatch(toggleLoading(true));
+    try {
+      const response = await axios({
+        url: "https://commitapps.herokuapp.com/api/forget-password/validate-otp",
+        method: "post",
+        data: payload,
+      });
+      const { data } = response;
+
+      console.log("data > ", data);
+
+      dispatch(toggleLoading(false));
+    } catch (error) {
+      console.log("error > ", error);
+    }
+  };
+
   return {
     sendOtp,
     makeLoading,
     resendOtp,
+    validateOtp,
   };
 };
 
