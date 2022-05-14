@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import { useEffect } from "react";
 import { useLoginDispatcher } from "../redux/reducers/login";
 
 const LoginContainer = () => {
@@ -17,6 +18,7 @@ const LoginContainer = () => {
       password: "",
     },
     onSubmit: handleOnSubmit,
+    enableReinitialize: true,
   });
   return (
     <div className="min-h-screen flex justify-center items-center container mx-auto">
