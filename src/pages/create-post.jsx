@@ -14,6 +14,7 @@ const initialValues = {
 
 const CreatePost = () => {
   const [previews, setPreviews] = useState();
+
   const {
     createPost: { loading },
     doSubmit,
