@@ -33,17 +33,21 @@ export const useListPostDispatcher = () => {
   const dispatch = useDispatch();
   const loadPosts = async () => {
     try {
+      dispatch(toggleLoading(true));
       const response = await axios({
         url: "https://binarfe-api-server.herokuapp.com/api/posts?pagination[pageSize]=10&pagination[page]=1&filters[isPublish][$eq]=true&sort[createdAt]=desc",
         method: "get",
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjUyNTAwMzAxLCJleHAiOjE2NTUwOTIzMDF9.KcrVjr9TqxHQTeh0thJYLO0tdi_Bc_S1Z6lG1qtndoo`,
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjUzMzE3Njk2LCJleHAiOjE2NTU5MDk2OTZ9.jvnGpjKonRixTlfmEai6bLDFsFnuaNiBHIl_jXUyGGw`,
         },
       });
       const { data } = response;
       console.log("response > ", response.data.data);
       dispatch(setPosts(data.data));
-    } catch (error) {}
+      dispatch(toggleLoading(false));
+    } catch (error) {
+      dispatch(toggleLoading(false));
+    }
   };
   return {
     listPost,
