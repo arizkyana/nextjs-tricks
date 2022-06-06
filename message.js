@@ -1,8 +1,8 @@
-console.log(hello());
+console.log(getMessage());
 const hello = () => {
   return getMessage();
 };
 
 function getMessage() {
-  return "halo!";
+  return "Halo, Selamat pagi !";
 }
