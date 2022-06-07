@@ -39,17 +39,30 @@ const LikeButtons = ({ post }) => {
 };
 
 const Modal = ({ post }) => {
-  const { loadPosts } = useListPostDispatcher();
+  const { posts: {detailPost}, loadPosts, getDetailPost } = useListPostDispatcher();
+  
+  
+  // contoh aja
+  useEffect(() => {
+    if (post && post.id) {
+      getDetailPost(post.id);
+    }
+  
+  }, [post]);
 
   const onSubmit = () => loadPosts();
 
   return (
     <div className="fixed w-full left-0 bottom-0">
       <div className="mx-auto max-w-lg border py-3 flex justify-between p-3 bg-white">
-        <div>
-          <div className="font-bold 2xl">{post.title}</div>
-          <div>{post.caption}</div>
-        </div>
+        {
+          detailPost && detailPost.id && (
+            <div>
+              <div className="font-bold 2xl">{detailPost.title}</div>
+              <div>{detailPost.caption}</div>
+            </div>
+          )
+        }
         <div>
           <button
             onClick={() => onSubmit()}
